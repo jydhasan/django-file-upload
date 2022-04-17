@@ -7,8 +7,14 @@ from .models import file_upload
 
 
 def index(request):
+
+
+
     if request.method == 'POST':
         form = MyfileUploadForm(request.POST, request.FILES)
+
+
+        print(form.as_p)
         
         if form.is_valid():
             name = form.cleaned_data['file_name']
@@ -32,6 +38,7 @@ def index(request):
 
 
 def show_file(request):
+    # this for testing 
     all_data = file_upload.objects.all()
 
     context = {
